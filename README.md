@@ -72,6 +72,17 @@ http://localhost:5050/
 - Accuracy Evaluation
 
 ---
+## ⚙️ How to Run This Project
 
+git clone https://github.com/AP24110011508/student-performance-prediction-ml.git  
+cd student-performance-prediction-ml  
+pip install -r requirements.txt  
+export DB_PASSWORD="your_mysql_password"  
+python app.py
+
+## 📸 Project Screenshots
+
+![Screenshot 1](screenshot1.png)
+![Screenshot 2](screenshot2.png)
 ## 👨‍💻 Author
 Charan
