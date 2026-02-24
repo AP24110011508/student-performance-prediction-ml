@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
-# Updated dataset with grades
+# Sample dataset
 data = {
     'attendance': [95, 88, 75, 60, 50, 85, 92, 40, 70, 80],
     'study_hours': [7, 5, 3, 2, 1, 6, 7, 1, 3, 4],

@@ -7,7 +7,7 @@ import os
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password=os.getenv("DB_PASSWORD"),   # ✅ secure
+    password=os.getenv("DB_PASSWORD"),
     database="student_db"
 )
 
@@ -37,7 +37,7 @@ def index():
                 'index.html',
                 result="Invalid Input! Please enter valid values.",
                 prob=None,
-                accuracy=round(accuracy*100, 2),
+                accuracy=round(accuracy * 100, 2),
                 history=history
             )
 
@@ -60,7 +60,7 @@ def index():
         )
         db.commit()
 
-    # Fetch prediction history
+    # Fetch history
     cursor.execute("SELECT * FROM predictions")
     history = cursor.fetchall()
 
@@ -73,4 +73,4 @@ def index():
     )
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5050)

@@ -25,10 +25,6 @@
             text-align: center;
         }
 
-        h2 {
-            margin-bottom: 20px;
-        }
-
         input {
             width: 100%;
             padding: 10px;
@@ -39,7 +35,6 @@
         }
 
         button {
-            background: #00c9ff;
             background: linear-gradient(to right, #00c9ff, #92fe9d);
             border: none;
             padding: 12px;
@@ -47,23 +42,6 @@
             border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        .result {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .accuracy {
-            margin-top: 10px;
-            font-size: 14px;
-            opacity: 0.8;
         }
 
         table {
@@ -81,7 +59,6 @@
         th {
             background-color: rgba(255,255,255,0.2);
         }
-
     </style>
 </head>
 <body>
@@ -97,15 +74,11 @@
     </form>
 
     {% if result %}
-        <div class="result">
-            Result: {{ result }} <br>
-            Confidence: {{ prob }}%
-        </div>
+        <h3>Result: {{ result }}</h3>
+        <p>Confidence: {{ prob }}%</p>
     {% endif %}
 
-    <div class="accuracy">
-        Model Accuracy: {{ accuracy }}%
-    </div>
+    <p>Model Accuracy: {{ accuracy }}%</p>
 </div>
 
 {% if history %}
