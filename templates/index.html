@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Predictor</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            width: 420px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            color: white;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            background: #00c9ff;
+            background: linear-gradient(to right, #00c9ff, #92fe9d);
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .accuracy {
+            margin-top: 10px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        table {
+            margin-top: 30px;
+            border-collapse: collapse;
+            width: 90%;
+            color: white;
+        }
+
+        th, td {
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 8px;
+        }
+
+        th {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🎓 Student Performance Predictor</h2>
+
+    <form method="POST">
+        <input type="number" name="attendance" placeholder="Attendance (%)" min="0" max="100" required>
+        <input type="number" name="study_hours" placeholder="Study Hours (0-24)" min="0" max="24" required>
+        <input type="number" name="internal_marks" placeholder="Internal Marks (0-100)" min="0" max="100" required>
+        <button type="submit">Predict Grade</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            Result: {{ result }} <br>
+            Confidence: {{ prob }}%
+        </div>
+    {% endif %}
+
+    <div class="accuracy">
+        Model Accuracy: {{ accuracy }}%
+    </div>
+</div>
+
+{% if history %}
+<table>
+<tr>
+    <th>ID</th>
+    <th>Attendance</th>
+    <th>Study Hours</th>
+    <th>Marks</th>
+    <th>Grade</th>
+</tr>
+
+{% for row in history %}
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+    <td>{{ row[4] }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+</body>
+</html>
